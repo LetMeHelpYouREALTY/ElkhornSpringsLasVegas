@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MapPinned } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BreadcrumbJsonLd } from "@/components/integrations/BreadcrumbJsonLd";
 import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metadata";
 import { NearbyAmenitiesSection } from "@/components/sections/NearbyAmenitiesSection";
 import { neighborhoods } from "@/lib/neighborhoods";
@@ -24,6 +25,7 @@ export const metadata: Metadata = createMetadata({
 export default function NeighborhoodsHubPage() {
   return (
     <div className="mx-auto max-w-6xl space-y-10 px-4 py-10 sm:px-6 sm:py-14">
+      <BreadcrumbJsonLd crumbs={[{ name: "Neighborhoods", path }]} />
       <header className="max-w-3xl space-y-4">
         <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
           <MapPinned className="size-3.5 shrink-0" aria-hidden />

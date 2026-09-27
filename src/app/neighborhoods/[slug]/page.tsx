@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TrackedTelLink } from "@/components/integrations/TrackedTelLink";
 import { Button } from "@/components/ui/button";
+import { BreadcrumbJsonLd } from "@/components/integrations/BreadcrumbJsonLd";
 import { JsonLd } from "@/components/integrations/JsonLd";
 import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metadata";
 import { faqPageJsonLd } from "@/lib/schema";
@@ -39,9 +40,16 @@ export default async function NeighborhoodDetailPage({ params }: Props) {
   if (!n) notFound();
 
   const faqLd = n.faqs && n.faqs.length > 0 ? faqPageJsonLd(n.faqs) : null;
+  const neighborhoodPath = `/neighborhoods/${slug}`;
 
   return (
     <div className="mx-auto max-w-3xl space-y-10 px-4 py-10 sm:px-6 sm:py-14">
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: "Neighborhoods", path: "/neighborhoods" },
+          { name: n.shortLabel, path: neighborhoodPath },
+        ]}
+      />
       {faqLd ? <JsonLd data={faqLd} /> : null}
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">

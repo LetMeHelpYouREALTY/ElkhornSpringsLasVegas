@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogMarkdown } from "@/components/blog/BlogMarkdown";
+import { BreadcrumbJsonLd } from "@/components/integrations/BreadcrumbJsonLd";
 import { JsonLd } from "@/components/integrations/JsonLd";
 import { getPostBySlug, getPostSlugs } from "@/lib/blog";
 import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metadata";
@@ -49,6 +50,12 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article className="mx-auto max-w-3xl space-y-8 px-4 py-10 sm:px-6 sm:py-14">
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path },
+        ]}
+      />
       <JsonLd data={articleLd} />
       <header className="space-y-2">
         <p className="text-xs text-muted-foreground">{post.date}</p>

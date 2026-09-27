@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "@/components/integrations/BreadcrumbJsonLd";
 import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metadata";
 import { getAllPostsMeta } from "@/lib/blog";
 import { siteIdentity } from "@/lib/site-contact";
@@ -21,6 +22,7 @@ export default function BlogIndexPage() {
   const posts = getAllPostsMeta();
   return (
     <div className="mx-auto max-w-3xl space-y-8 px-4 py-10 sm:px-6 sm:py-14">
+      <BreadcrumbJsonLd crumbs={[{ name: "Blog", path }]} />
       <header className="space-y-3">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Elkhorn Springs blog</h1>
         <p className="text-muted-foreground">

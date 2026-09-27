@@ -2,10 +2,13 @@ import type { AmenityCategoryId } from "@/config/community-map";
 
 export type CuratedPlace = {
   name: string;
-  address: string;
+  /** Omit from UI/schema when not verified against sourceUrl */
+  address?: string;
   category: AmenityCategoryId;
   /** schema.org @type */
   schemaType: string;
+  /** Official business/agency page used to verify name and address */
+  sourceUrl: string;
   note?: string;
 };
 
@@ -16,6 +19,8 @@ export const curatedNearbyPlaces: CuratedPlace[] = [
     address: "7130 North Durango Drive, Las Vegas, NV 89149",
     category: "grocery",
     schemaType: "GroceryStore",
+    sourceUrl:
+      "https://www.smithsfoodanddrug.com/stores/grocery/nv/las-vegas/montecito-marketplace/706/00332",
     note: "Full-service supermarket on North Durango, a common grocery run from Elkhorn Springs.",
   },
   {
@@ -23,6 +28,7 @@ export const curatedNearbyPlaces: CuratedPlace[] = [
     address: "6900 North Durango Drive, Las Vegas, NV 89149",
     category: "healthcare",
     schemaType: "Hospital",
+    sourceUrl: "https://www.centennialhillshospital.com/patients-visitors/maps-directions",
     note: "Acute-care hospital on Durango north of the 215 beltway.",
   },
   {
@@ -30,27 +36,31 @@ export const curatedNearbyPlaces: CuratedPlace[] = [
     address: "7230 North Decatur Boulevard, Las Vegas, NV 89131",
     category: "healthcare",
     schemaType: "Hospital",
-    note: "Emergency department in the 89131 zip code.",
+    sourceUrl: "https://www.valleyhealthsystemlv.com/our-facilities/er-at-valley-vista",
+    note: "Freestanding emergency department at Decatur and Elkhorn, an extension of Centennial Hills Hospital.",
   },
   {
     name: "Floyd Lamb Park at Tule Springs",
     address: "9200 Tule Springs Road, Las Vegas, NV 89131",
     category: "parks",
     schemaType: "Park",
-    note: "Large city park with lakes, trails, and picnic areas just north of Elkhorn Springs.",
+    sourceUrl: "https://www.lasvegasnevada.gov/Residents/Parks-Facilities/Floyd-Lamb-Park",
+    note: "680-acre city park with lakes, trails, and picnic areas just north of Elkhorn Springs.",
   },
   {
     name: "Arbor View High School",
     address: "7500 Whispering Sands Drive, Las Vegas, NV 89131",
     category: "schools",
     schemaType: "School",
+    sourceUrl: "https://www.arborviewhs.org/apps/contact/",
     note: "Clark County School District high school serving much of northwest Las Vegas.",
   },
   {
     name: "Howard E. Heckethorn Elementary School",
-    address: "5255 Village Circle, Las Vegas, NV 89130",
+    address: "5150 Whispering Sands Drive, Las Vegas, NV 89131",
     category: "schools",
     schemaType: "School",
+    sourceUrl: "https://www.heckethornes.net/administration",
     note: "CCSD elementary school in the Centennial Hills area.",
   },
 ];
@@ -82,7 +92,7 @@ export const amenityWrittenSections: AmenityWrittenSection[] = [
     id: "parks",
     heading: "Parks & outdoor recreation",
     paragraphs: [
-      `Floyd Lamb Park at Tule Springs (9200 Tule Springs Road) is the signature outdoor destination just north of Elkhorn Springs—fishing ponds, trails, and picnic areas on more than 2,000 acres. The City of Las Vegas charges a per-vehicle entry fee; check current hours and payment options before you go.`,
+      `Floyd Lamb Park at Tule Springs (9200 Tule Springs Road) is the signature outdoor destination just north of Elkhorn Springs—a 680-acre park with fishing ponds, trails, and picnic areas. The City of Las Vegas charges a per-vehicle entry fee; check current hours and payment options before you go.`,
       `Skye Canyon Park and trail networks northwest of Elkhorn Springs appeal to buyers who want newer playgrounds and sports fields; confirm access and parking for the village you tour.`,
     ],
   },
@@ -112,7 +122,7 @@ export const amenityWrittenSections: AmenityWrittenSection[] = [
     id: "schools",
     heading: "Schools",
     paragraphs: [
-      `Elkhorn Springs sits in the Clark County School District. Arbor View High School (7500 Whispering Sands Drive, 89131) is the well-known high school for much of the northwest valley. Elementary and middle school assignments depend on your exact address—verify current zoning with CCSD before you write an offer.`,
+      `Elkhorn Springs sits in the Clark County School District. Arbor View High School (7500 Whispering Sands Drive, 89131) is the well-known high school for much of the northwest valley. Howard E. Heckethorn Elementary (5150 Whispering Sands Drive, 89131) serves many Centennial Hills addresses. Elementary and middle school assignments depend on your exact address—verify current zoning with CCSD before you write an offer.`,
       "See our dedicated schools page for boundary reminders and tour-day questions.",
     ],
   },
@@ -141,7 +151,7 @@ export const amenitiesFaqs: { question: string; answer: string }[] = [
   },
   {
     question: `What is the closest large park to Elkhorn Springs?`,
-    answer: `Floyd Lamb Park at Tule Springs (9200 Tule Springs Road) is the major city park just north of the neighborhood, with lakes, trails, and picnic areas.`,
+    answer: `Floyd Lamb Park at Tule Springs (9200 Tule Springs Road) is a 680-acre city park just north of the neighborhood, with lakes, trails, and picnic areas.`,
   },
   {
     question: `Which high school serves Elkhorn Springs?`,

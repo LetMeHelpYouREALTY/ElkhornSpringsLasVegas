@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TrackedTelLink } from "@/components/integrations/TrackedTelLink";
 import { Button } from "@/components/ui/button";
+import { BreadcrumbJsonLd } from "@/components/integrations/BreadcrumbJsonLd";
 import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metadata";
 import { agent, phones, siteIdentity } from "@/lib/site-contact";
 
@@ -23,6 +24,7 @@ export const metadata: Metadata = createMetadata({
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-10 px-4 py-10 sm:px-6 sm:py-14">
+      <BreadcrumbJsonLd crumbs={[{ name: "About", path }]} />
       <header className="space-y-3">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">About Dr. Jan Duffy</h1>
         <p className="text-muted-foreground">

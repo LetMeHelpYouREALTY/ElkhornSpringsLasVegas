@@ -111,6 +111,71 @@ export function openHouseEventsJsonLd(events: OpenHouseEventForSchema[]) {
   };
 }
 
+export function breadcrumbListJsonLd(
+  items: { name: string; path: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${siteUrl}${item.path}`,
+    })),
+  };
+}
+
+export type FeaturedPlaceForSchema = {
+  name: string;
+  address: string;
+  schemaType: string;
+};
+
+export function featuredPlacesItemListJsonLd(places: FeaturedPlaceForSchema[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Featured places near ${siteIdentity.primaryArea}`,
+    itemListElement: places.map((place, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": place.schemaType,
+        name: place.name,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: place.address,
+        },
+      },
+    })),
+  };
+}
+
+export function communityPlaceJsonLd(input: { lat: number; lng: number }) {
+  const addr = getPostalAddress();
+  const street = getStreetAddress();
+  return {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    "@id": `${siteUrl}/amenities#community`,
+    name: `${siteIdentity.primaryArea}, ${siteIdentity.city}, ${siteIdentity.state} ${siteIdentity.zip}`,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: input.lat,
+      longitude: input.lng,
+    },
+    address: {
+      "@type": "PostalAddress",
+      ...(street ? { streetAddress: street } : {}),
+      addressLocality: addr.addressLocality,
+      addressRegion: addr.addressRegion,
+      postalCode: addr.postalCode,
+      addressCountry: addr.addressCountry,
+    },
+  };
+}
+
 export function blogPostingJsonLd(input: {
   headline: string;
   description: string;

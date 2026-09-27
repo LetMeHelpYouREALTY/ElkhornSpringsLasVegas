@@ -35,10 +35,7 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function AmenitiesPage() {
-  const breadcrumbLd = breadcrumbListJsonLd([
-    { name: "Home", path: "/" },
-    { name: "Nearby amenities", path },
-  ]);
+  const breadcrumbLd = breadcrumbListJsonLd([{ name: "Nearby amenities", path }]);
   const faqLd = faqPageJsonLd(amenitiesFaqs);
   const placesLd = featuredPlacesItemListJsonLd(
     curatedNearbyPlaces.map((p) => ({

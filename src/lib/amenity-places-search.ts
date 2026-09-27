@@ -31,7 +31,8 @@ export function searchCategory(
         },
         includedPrimaryTypes: types,
         maxResultCount: 10,
-        rankPreference: "POPULARITY" as any,
+        // Places API accepts POPULARITY string; avoid deprecated RankPreference enum
+        rankPreference: "POPULARITY" as "DISTANCE" | "POPULARITY",
       });
 
       const results: AmenityPlaceResult[] = [];
@@ -45,7 +46,7 @@ export function searchCategory(
           address: place.formattedAddress ?? "",
           lat,
           lng,
-          mapsUri: place.googleMapsURI,
+          mapsUri: place.googleMapsURI ?? undefined,
         });
       }
       return results;

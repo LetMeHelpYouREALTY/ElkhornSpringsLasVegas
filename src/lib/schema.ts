@@ -127,21 +127,6 @@ export function openHouseEventsJsonLd(events: OpenHouseEventForSchema[]) {
   };
 }
 
-export function breadcrumbListJsonLd(
-  items: { name: string; path: string }[],
-) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: `${siteUrl}${item.path}`,
-    })),
-  };
-}
-
 export type FeaturedPlaceForSchema = {
   name: string;
   address?: string;

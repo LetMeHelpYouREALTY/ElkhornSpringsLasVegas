@@ -1,4 +1,7 @@
-const SYSTEM = "elkhorn-springs-las-vegas";
+import { siteIdentity } from "@/lib/site-contact";
+
+/** FUB source/system/tag — must match the live site domain for lead attribution */
+const FUB_SYSTEM = siteIdentity.domain.toLowerCase();
 
 export type FubEventType =
   | "General Inquiry"
@@ -63,8 +66,8 @@ export function buildFubEventBody(input: ContactLeadInput) {
   const message = messageBody || "Contact form submission";
 
   return {
-    source: SYSTEM,
-    system: SYSTEM,
+    source: FUB_SYSTEM,
+    system: FUB_SYSTEM,
     type,
     message,
     description: `${input.formName} — ${input.pagePath}`,
@@ -74,7 +77,7 @@ export function buildFubEventBody(input: ContactLeadInput) {
       lastName,
       emails: input.email ? [{ value: input.email }] : [],
       phones: input.phone ? [{ value: input.phone }] : [],
-      tags: [SYSTEM, input.formName],
+      tags: [FUB_SYSTEM, input.formName],
     },
   };
 }
@@ -100,6 +103,7 @@ export async function sendContactLeadToFub(
       headers: {
         Authorization: `Basic ${auth}`,
         "Content-Type": "application/json",
+        "X-System": FUB_SYSTEM,
       },
       body: JSON.stringify(body),
     });

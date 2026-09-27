@@ -60,6 +60,22 @@ export function localBusinessAndAgentJsonLd() {
   };
 }
 
+export type BreadcrumbItem = { name: string; path: string };
+
+export function breadcrumbListJsonLd(crumbs: BreadcrumbItem[]) {
+  const items: BreadcrumbItem[] = [{ name: "Home", path: "/" }, ...crumbs];
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: new URL(crumb.path, siteUrl).toString(),
+    })),
+  };
+}
+
 export function faqPageJsonLd(faqs: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",

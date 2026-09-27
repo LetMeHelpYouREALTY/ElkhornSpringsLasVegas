@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MlsDisclaimer } from "@/components/compliance/MlsDisclaimer";
 import { RealScoutOfficeListings } from "@/components/integrations/RealScoutOfficeListings";
 import { HomesForSaleIntro } from "@/components/sections/HomesForSaleIntro";
+import { BreadcrumbJsonLd } from "@/components/integrations/BreadcrumbJsonLd";
 import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metadata";
 import { agent, siteIdentity } from "@/lib/site-contact";
 
@@ -22,6 +23,7 @@ export const metadata: Metadata = createMetadata({
 export default function HomesForSalePage() {
   return (
     <div className="mx-auto max-w-6xl space-y-10 px-4 py-10 sm:px-6 sm:py-14">
+      <BreadcrumbJsonLd crumbs={[{ name: "Homes for sale", path }]} />
       <header className="max-w-3xl space-y-3">
         <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Homes for sale in Elkhorn Springs ({siteIdentity.zip})

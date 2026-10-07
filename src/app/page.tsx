@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/integrations/JsonLd";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { HeroBuyer } from "@/components/sections/HeroBuyer";
 import { NeighborhoodPreviewGrid } from "@/components/sections/NeighborhoodPreviewGrid";
+import { NearbyAmenitiesSection } from "@/components/sections/NearbyAmenitiesSection";
 import { OpenHouseMapSection } from "@/components/sections/OpenHouseMapSection";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { getValidatedOpenHouseEvents, openHouseFaqs } from "@/config/open-house";
@@ -35,6 +36,7 @@ export default function HomePage() {
       {faqLd ? <JsonLd data={faqLd} /> : null}
       <HeroBuyer />
       <OpenHouseMapSection />
+      <NearbyAmenitiesSection />
       <TrustStrip />
       <NeighborhoodPreviewGrid />
       <CtaBand />

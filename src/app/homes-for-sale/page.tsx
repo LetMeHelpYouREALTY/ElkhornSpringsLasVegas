@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MlsDisclaimer } from "@/components/compliance/MlsDisclaimer";
 import { RealScoutOfficeListings } from "@/components/integrations/RealScoutOfficeListings";
+import { NearbyAmenitiesSection } from "@/components/sections/NearbyAmenitiesSection";
 import { HomesForSaleIntro } from "@/components/sections/HomesForSaleIntro";
 import { BreadcrumbJsonLd } from "@/components/integrations/BreadcrumbJsonLd";
 import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metadata";
@@ -35,6 +36,13 @@ export default function HomesForSalePage() {
       </header>
 
       <HomesForSaleIntro />
+
+      <NearbyAmenitiesSection
+        id="listings-amenities"
+        heading="What's near the homes you're viewing"
+        subcopy="Filter restaurants, grocery, parks, healthcare, and schools around Elkhorn Springs before you write an offer."
+        variant="compact"
+      />
 
       <RealScoutOfficeListings />
       <MlsDisclaimer />

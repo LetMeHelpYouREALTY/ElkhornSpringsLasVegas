@@ -11,7 +11,11 @@ import {
   type AmenityCategoryId,
 } from "@/config/community-map";
 import { searchCategory, type AmenityPlaceResult } from "@/lib/amenity-places-search";
-import { loadGoogleMaps, mapsAuthFailed } from "@/lib/google-maps-loader";
+import {
+  loadGoogleMaps,
+  mapsAuthFailed,
+  watchGoogleMapsLoadFailure,
+} from "@/lib/google-maps-loader";
 import { cn } from "@/lib/utils";
 
 const MAP_MIN_HEIGHT = "min(70vh, 520px)";
@@ -96,6 +100,7 @@ export function AmenityMap({ className, variant = "full" }: AmenityMapProps) {
   const communityMarkerRef = useRef<google.maps.Marker | null>(null);
   const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
   const loadStartedRef = useRef(false);
+  const mapFailureWatchRef = useRef<(() => void) | null>(null);
 
   const [isInView, setIsInView] = useState(false);
   const [activeCategory, setActiveCategory] = useState<AmenityCategoryId>(defaultAmenityCategoryId);
@@ -117,12 +122,16 @@ export function AmenityMap({ className, variant = "full" }: AmenityMapProps) {
 
   useEffect(() => {
     if (!useFallback) return;
+    mapFailureWatchRef.current?.();
+    mapFailureWatchRef.current = null;
     mapInstanceRef.current = null;
     communityMarkerRef.current?.setMap(null);
     communityMarkerRef.current = null;
     markersRef.current.forEach((m) => m.setMap(null));
     markersRef.current = [];
   }, [useFallback]);
+
+  useEffect(() => () => mapFailureWatchRef.current?.(), []);
 
   useEffect(() => {
     const el = rootRef.current;
@@ -260,6 +269,11 @@ export function AmenityMap({ className, variant = "full" }: AmenityMapProps) {
         fullscreenControl: true,
       });
       mapInstanceRef.current = map;
+      mapFailureWatchRef.current?.();
+      mapFailureWatchRef.current = watchGoogleMapsLoadFailure(mapContainerRef.current, () => {
+        setUseFallback(true);
+        setLoadError(null);
+      });
       await addCommunityMarker(map);
       await searchPlaces(map, activeCategory);
       setUseFallback(false);

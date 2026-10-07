@@ -28,3 +28,42 @@ if (typeof window !== "undefined") {
     mapsAuthFailed = true;
   });
 }
+
+/** Referer/key errors sometimes render Google's grey error UI without calling gm_authFailure. */
+export function watchGoogleMapsLoadFailure(
+  container: HTMLElement,
+  onFailure: () => void,
+): () => void {
+  let stopped = false;
+  const stop = () => {
+    stopped = true;
+  };
+
+  const check = () => {
+    if (stopped) return;
+    const text = container.innerText;
+    if (
+      container.querySelector(".gm-err-container") ||
+      /didn\u2019t load Google Maps correctly|didn't load Google Maps correctly|RefererNotAllowedMapError/i.test(
+        text,
+      )
+    ) {
+      mapsAuthFailed = true;
+      window.dispatchEvent(new Event("gmaps:auth-failure"));
+      onFailure();
+      stop();
+    }
+  };
+
+  const interval = window.setInterval(check, 350);
+  const timeout = window.setTimeout(() => {
+    window.clearInterval(interval);
+    stop();
+  }, 6000);
+
+  return () => {
+    window.clearInterval(interval);
+    window.clearTimeout(timeout);
+    stop();
+  };
+}

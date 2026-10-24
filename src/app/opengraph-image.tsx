@@ -49,7 +49,7 @@ export default function OpenGraphImage() {
           {siteIdentity.siteName}
         </p>
         <p style={{ fontSize: 22, color: "#8fa89a", margin: "48px 0 0" }}>
-          {agent.name} · {agent.brokerage}
+          {agent.name} · REALTOR®
         </p>
       </div>
     ),

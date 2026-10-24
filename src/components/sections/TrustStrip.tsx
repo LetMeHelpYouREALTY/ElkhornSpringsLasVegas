@@ -14,7 +14,7 @@ const items = [
   },
   {
     title: "Licensed Nevada REALTOR®",
-    body: `${agent.name} · ${agent.brokerage} · License ${agent.license}.`,
+    body: `${agent.name} · In real estate since 1983.`,
     icon: BadgeCheck,
   },
 ] as const;

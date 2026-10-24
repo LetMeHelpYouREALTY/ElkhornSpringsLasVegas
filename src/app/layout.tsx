@@ -40,7 +40,7 @@ export const metadata: Metadata = createMetadata({
     default: `${siteIdentity.primaryArea} Real Estate (${siteIdentity.zip}) | ${agent.name}`,
     template: `%s | ${siteIdentity.siteName}`,
   },
-  description: `Buy or sell in Elkhorn Springs, Las Vegas ${siteIdentity.zip}. Village-level expertise, MLS search, schools, and market context with ${agent.name} — ${agent.brokerage}.`,
+  description: `Buy or sell in Elkhorn Springs, Las Vegas ${siteIdentity.zip}. Village-level expertise, MLS search, schools, and market context with ${agent.name}, REALTOR®.`,
   openGraph: {
     ...defaultOpenGraph,
     title: siteIdentity.siteName,

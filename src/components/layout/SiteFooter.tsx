@@ -21,9 +21,7 @@ export function SiteFooter() {
             <p className="mt-4 text-sm">
               <span className="font-medium text-foreground">{agent.name}</span>
               <br />
-              Nevada license {agent.license}
-              <br />
-              {agent.brokerage}
+              {agent.brokerage} since September 2008 · License {agent.license}
             </p>
             <p className="mt-4 flex flex-col gap-2 text-sm sm:flex-row sm:flex-wrap sm:gap-x-4">
               <TrackedTelLink className="text-primary underline-offset-4 hover:underline" href={`tel:${phones.primaryCtaTel}`}>

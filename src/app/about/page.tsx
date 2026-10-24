@@ -12,7 +12,7 @@ const bombbombUrl = process.env.NEXT_PUBLIC_BOMBBOMB_EMBED_URL?.trim();
 
 export const metadata: Metadata = createMetadata({
   title: `About ${agent.name} | ${siteIdentity.primaryArea} REALTOR®`,
-  description: `${agent.name}, Nevada license ${agent.license}, represents buyers and sellers in Elkhorn Springs (${siteIdentity.zip}) with ${agent.brokerage}.`,
+  description: `${agent.name}, REALTOR® in real estate since 1983, represents buyers and sellers in Elkhorn Springs (${siteIdentity.zip}).`,
   alternates: { canonical: path },
   openGraph: {
     ...defaultOpenGraph,
@@ -57,8 +57,8 @@ export default function AboutPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">Credentials</h2>
         <ul className="list-inside list-disc text-sm text-muted-foreground">
-          <li>Nevada real estate license {agent.license}</li>
-          <li>{agent.brokerage}</li>
+          <li>Top 1% Las Vegas REALTOR®</li>
+          <li>Licensed Nevada REALTOR®, in real estate since 1983</li>
           <li>Focused service area: Elkhorn Springs &amp; Skye Canyon ({siteIdentity.zip})</li>
         </ul>
       </section>

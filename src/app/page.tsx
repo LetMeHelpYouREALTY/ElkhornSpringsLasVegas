@@ -19,7 +19,7 @@ export const metadata: Metadata = createMetadata({
   openGraph: {
     ...defaultOpenGraph,
     title: `${siteIdentity.siteName} | Open houses ${siteIdentity.zip}`,
-    description: `Open houses and homes in Elkhorn Springs (${siteIdentity.zip}) with ${agent.name} — ${agent.brokerage}.`,
+    description: `Open houses and homes in Elkhorn Springs (${siteIdentity.zip}) with ${agent.name}, REALTOR®.`,
     url: new URL(path, siteMetadataBase),
   },
 });

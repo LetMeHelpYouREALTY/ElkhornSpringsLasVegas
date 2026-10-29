@@ -98,7 +98,7 @@ export default async function NeighborhoodDetailPage({ params }: Props) {
       </section>
 
       <p className="text-xs text-muted-foreground">
-        {agent.name}, REALTOR® · In real estate since 1983.
+        {agent.name}, REALTOR® · Licensed since 2008 · 35 years in Las Vegas.
       </p>
     </div>
   );

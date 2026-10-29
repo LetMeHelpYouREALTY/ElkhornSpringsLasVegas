@@ -57,8 +57,8 @@ export const neighborhoods: NeighborhoodEntry[] = [
     name: "The Meadows at Elkhorn Springs",
     shortLabel: "The Meadows",
     description:
-      "Open-space oriented blocks with family-friendly curb appeal. Buyers often short-list The Meadows for yard size, sight lines, and neighborly blocks.",
-    highlights: ["Greenbelt adjacency on select lots", "Family-oriented floor plans common"],
+      "Open-space oriented blocks with curb appeal. Buyers often short-list The Meadows for yard size, sight lines, and neighborly blocks.",
+    highlights: ["Greenbelt adjacency on select lots", "Floor plans common"],
   },
   {
     slug: "wildflower",

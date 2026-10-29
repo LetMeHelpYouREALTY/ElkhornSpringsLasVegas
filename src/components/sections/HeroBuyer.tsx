@@ -36,9 +36,9 @@ export function HeroBuyer() {
             <p className="text-sm leading-snug text-muted-foreground">
               <span className="font-semibold text-foreground">{agent.name}</span>
               <span className="text-border"> · </span>
-              Top 1% Las Vegas REALTOR®
+              Las Vegas REALTOR®
               <span className="mt-1 block text-xs text-muted-foreground sm:mt-0 sm:inline sm:before:content-['·_']">
-                In real estate since 1983
+                Licensed since 2008 · 35 years in Las Vegas
               </span>
             </p>
           </div>

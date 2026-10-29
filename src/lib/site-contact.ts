@@ -23,8 +23,8 @@ export const agent = {
 
 export const phones = {
   /** Primary CTA — match GBP if used as main business phone */
-  primaryCta: "702-222-1964",
-  primaryCtaTel: "+17022221964",
+  primaryCta: "702-500-1955",
+  primaryCtaTel: "+17025001955",
   professional: "702-500-1955",
   professionalTel: "+17025001955",
 } as const;

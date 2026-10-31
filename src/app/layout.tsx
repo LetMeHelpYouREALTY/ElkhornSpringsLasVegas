@@ -13,6 +13,8 @@ import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metada
 import { localBusinessAndAgentJsonLd } from "@/lib/schema";
 import { agent, siteIdentity } from "@/lib/site-contact";
 import "./globals.css";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -73,6 +75,8 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <MobileStickyCta />
+        <VercelAnalytics />
+        <VercelSpeedInsights />
       </body>
     </html>
   );

@@ -14,6 +14,7 @@ const staticRoutes = [
   "/schools",
   "/market-report",
   "/lifestyle",
+  "/amenities",
   "/about",
   "/contact",
   "/blog",

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BreadcrumbJsonLd } from "@/components/integrations/BreadcrumbJsonLd";
 import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metadata";
+import { NearbyAmenitiesSection } from "@/components/sections/NearbyAmenitiesSection";
 import { neighborhoods } from "@/lib/neighborhoods";
 import { agent, siteIdentity } from "@/lib/site-contact";
 
@@ -68,6 +69,17 @@ export default function NeighborhoodsHubPage() {
           ))}
         </ul>
       </div>
+      <p className="text-sm text-muted-foreground">
+        <Link className="font-medium text-primary underline-offset-4 hover:underline" href="/amenities">
+          Explore nearby amenities in Elkhorn Springs
+        </Link>{" "}
+        before you compare villages.
+      </p>
+      <NearbyAmenitiesSection
+        id="neighborhoods-amenities"
+        heading="Amenities around every Elkhorn Springs village"
+        variant="compact"
+      />
     </div>
   );
 }

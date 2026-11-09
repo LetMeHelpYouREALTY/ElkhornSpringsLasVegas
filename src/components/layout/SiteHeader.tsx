@@ -21,6 +21,7 @@ const nav = [
   { href: "/schools", label: "Schools" },
   { href: "/market-report", label: "Market report" },
   { href: "/lifestyle", label: "Lifestyle" },
+  { href: "/amenities", label: "Amenities" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

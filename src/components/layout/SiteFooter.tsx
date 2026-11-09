@@ -8,6 +8,7 @@ const explore = [
   { href: "/neighborhoods/elkhorn-grove", label: "Elkhorn Grove (Toll Brothers)" },
   { href: "/schools", label: "Arbor View High School area schools" },
   { href: "/market-report", label: "89131 market update" },
+  { href: "/amenities", label: "Nearby amenities map" },
 ] as const;
 
 export function SiteFooter() {

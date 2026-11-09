@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BreadcrumbJsonLd } from "@/components/integrations/BreadcrumbJsonLd";
+import { NearbyAmenitiesSection } from "@/components/sections/NearbyAmenitiesSection";
 import { createMetadata, defaultOpenGraph, siteMetadataBase } from "@/lib/metadata";
 import { siteIdentity } from "@/lib/site-contact";
 
@@ -19,6 +20,7 @@ export const metadata: Metadata = createMetadata({
 
 export default function LifestylePage() {
   return (
+    <>
     <div className="mx-auto max-w-3xl space-y-8 px-4 py-10 sm:px-6 sm:py-14">
       <BreadcrumbJsonLd crumbs={[{ name: "Lifestyle", path }]} />
       <header className="space-y-3">
@@ -38,6 +40,16 @@ export default function LifestylePage() {
         </p>
       </section>
       <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Map groceries, parks, and errands</h2>
+        <p className="text-sm text-muted-foreground">
+          Use the{" "}
+          <Link className="font-medium text-primary underline-offset-4 hover:underline" href="/amenities">
+            nearby amenities guide
+          </Link>{" "}
+          for an interactive map and verified places before you schedule tours.
+        </p>
+      </section>
+      <section className="space-y-3">
         <h2 className="text-xl font-semibold">Need a tour that matches your routine?</h2>
         <p className="text-sm text-muted-foreground">
           Tell us how you live—pets, pickleball, night shifts, school pickups—and we will route a village tour
@@ -48,5 +60,11 @@ export default function LifestylePage() {
         </Link>
       </section>
     </div>
+    <NearbyAmenitiesSection
+      id="lifestyle-amenities-map"
+      heading="What's nearby from Elkhorn Springs"
+      variant="compact"
+    />
+    </>
   );
 }
